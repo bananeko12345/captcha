@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAKE CAPTCHA デモ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <h1>お問い合わせフォーム(デモ)</h1>
+    <form id="demo-form">
+      <label>お名前
+        <input type="text" placeholder="山田 太郎">
+      </label>
+      <label>メッセージ
+        <textarea rows="4" placeholder="ここに入力..."></textarea>
+      </label>
+
+      <!-- ▼▼▼ FAKE CAPTCHA ▼▼▼ -->
+      <div class="captcha-widget" id="captcha">
+        <div class="captcha-main">
+          <div class="captcha-box" id="captcha-box">
+            <!-- チェックボックス枠 (JSで中身を入れ替える) -->
+            <div class="box-inner" id="box-inner" role="checkbox" aria-checked="false" tabindex="0"></div>
+          </div>
+          <span class="captcha-label" id="captcha-label">私はロボットではありません</span>
+        </div>
+        <div class="captcha-badge">
+          <div class="badge-logo">🛡️</div>
+          <div class="badge-text">
+            <strong>FAKE CAPTCHA</strong>
+            <span>プライバシー・利用規約</span>
+          </div>
+        </div>
+
+        <!-- 画像選択テスト (モーダル) -->
+        <div class="captcha-modal" id="captcha-modal" hidden>
+          <div class="modal-inner">
+            <p class="modal-title">次の中から <strong>「● 丸」</strong> が含まれている画像をすべて選択してください</p>
+            <div class="img-grid" id="img-grid"></div>
+            <div class="modal-footer">
+              <button type="button" class="btn-refresh" id="btn-refresh" title="画像を更新">⟳ 更新</button>
+              <button type="button" class="btn-verify" id="btn-verify">確認</button>
+            </div>
+            <p class="modal-msg" id="modal-msg"></p>
+          </div>
+        </div>
+      </div>
+      <!-- ▲▲▲ FAKE CAPTCHA ▲▲▲ -->
+
+      <button type="submit" class="btn-submit" id="btn-submit" disabled>送信</button>
+      <p class="form-msg" id="form-msg"></p>
+    </form>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
