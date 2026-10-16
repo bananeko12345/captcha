@@ -11,10 +11,17 @@ npm start
 
 ## API
 
-- `POST /api/captcha/challenge` — ワンタイムチャレンジIDとCAPTCHA画像を発行
+- `POST /api/captcha/challenge` — ワンタイムチャレンジIDを発行
+- `GET /api/captcha/image/:id` — CAPTCHA画像を配信
 - `POST /api/captcha/verify` — チャレンジIDと入力文字を検証
 
 答えはブラウザへ返さず、サーバーのメモリに5分間だけ保持します。正解または試行回数超過で破棄します。
+
+## GitHub Pagesについて
+
+GitHub Pagesは静的ファイルしか配信できず、`/api`のNode.jsサーバーは動きません。そのため画面はAPIへの接続に失敗した場合、自動的にブラウザ内で画像を生成するフォールバックへ切り替えます。これにより画像は表示できますが、静的フォールバックは答えがブラウザに存在するため、本物のボット対策にはなりません。
+
+本番で使う場合は、`npm start`できるサーバーへ配置するか、GitHub Pagesをフロントエンド、Node.jsなどを別ホストのバックエンドとして接続してください。
 
 ## 本番で追加すべき対策
 
