@@ -1,9 +1,0 @@
-{
-  "name": "captcha-demo",
-  "version": "1.0.0",
-  "private": true,
-  "description": "Server-verified image text CAPTCHA demo",
-  "scripts": {
-    "start": "node server.js"
-  }
-}
