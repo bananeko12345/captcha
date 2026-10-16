@@ -1,44 +1,22 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>画像文字CAPTCHA デモ</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TYPE CHECK — CAPTCHA LAB</title><link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main class="container">
-    <h1>お問い合わせフォーム（デモ）</h1>
-    <form id="demo-form">
-      <label>お名前<input type="text" placeholder="山田 太郎"></label>
-      <label>メッセージ<textarea rows="4" placeholder="ここに入力..."></textarea></label>
-
-      <div class="captcha-widget" id="captcha">
-        <div class="captcha-main">
-          <div class="captcha-box" id="captcha-box" role="checkbox" aria-checked="false" tabindex="0">
-            <div class="box-inner" id="box-inner"></div>
-          </div>
-          <span class="captcha-label" id="captcha-label">私はロボットではありません</span>
-        </div>
-        <div class="captcha-badge"><div class="badge-logo">🛡️</div><div class="badge-text"><strong>画像文字CAPTCHA</strong><span>プライバシー・利用規約</span></div></div>
-
-        <div class="captcha-modal" id="captcha-modal" hidden>
-          <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="captcha-title">
-            <p class="modal-title" id="captcha-title">画像に表示されている文字を入力してください</p>
-            <img class="captcha-image" id="captcha-image" alt="読み取る文字が表示されたCAPTCHA画像">
-            <div class="captcha-answer-row">
-              <input id="captcha-answer" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="6" placeholder="6文字を入力" aria-label="CAPTCHAの答え">
-              <button type="button" class="btn-refresh" id="btn-refresh" title="画像を更新">⟳</button>
-            </div>
-            <div class="modal-footer"><button type="button" class="btn-verify" id="btn-verify">確認</button></div>
-            <p class="modal-msg" id="modal-msg" role="alert"></p>
-          </div>
-        </div>
-      </div>
-
-      <button type="submit" class="btn-submit" id="btn-submit" disabled>送信</button>
-      <p class="form-msg" id="form-msg" role="status"></p>
-    </form>
+  <main class="shell">
+    <header class="topbar"><div class="brand-mark">✓</div><div><strong>TYPE CHECK</strong><small>CAPTCHA LAB / 02</small></div><div class="status"><i></i> LOCAL DEMO</div></header>
+    <section class="intro"><p class="eyebrow">TEXT VERIFICATION</p><h1>見えた文字を、<br><em>入力する。</em></h1><p class="lead">画像に描かれた文字を読み取り、入力欄に入力してください。<br>「更新」で毎回ちがう画像をランダム生成できます。</p><div class="accent-line"></div><div class="meta"><div><span>MODE</span><b>TEXT IMAGE</b></div><div><span>ROUND</span><b>01</b></div><div><span>LOCALE</span><b>JA-JP</b></div></div><p class="note">教育・小規模デモ用<br>本番ではレート制限と監視を追加してください</p></section>
+    <section class="challenge-card" id="captcha">
+      <div class="card-head"><span>CHECKPOINT / T-01</span><b>SERVER CHALLENGE</b></div>
+      <div class="instruction"><div class="type-icon">Aa</div><div><small>画像の文字を入力</small><h2>画像に書かれている文字を入力してください</h2><p>大文字・小文字は区別しません。読みにくい場合は更新できます。</p></div></div>
+      <div class="captcha-row"><div class="image-frame"><img id="captcha-image" alt="読み取る文字が表示されたCAPTCHA画像"><div class="loading-image" id="image-loading">画像を読み込み中…</div></div><button type="button" class="refresh-button" id="btn-refresh"><span>↻</span> 画像を更新</button></div>
+      <div class="answer-row"><label for="captcha-answer">ANSWER <span>6 CHARACTERS</span></label><div class="input-line"><input id="captcha-answer" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="6" placeholder="文字を入力…"><button type="button" id="btn-verify">確認する</button></div><p class="modal-msg" id="modal-msg" role="alert"></p></div>
+      <div class="success-row" id="success-row" hidden><span>✓</span> 確認しました。このフォームを送信できます。</div>
+    </section>
+    <form id="demo-form"><button type="submit" class="submit-button" id="btn-submit" disabled>送信する</button><p class="form-msg" id="form-msg" role="status"></p></form>
+    <footer>SECURE TEXT VERIFICATION <span>v0.2.0</span></footer>
   </main>
   <script src="script.js"></script>
 </body>
